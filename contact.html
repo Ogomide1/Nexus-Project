@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 NEXUS Gaming Hub - Contact Us</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #00d4ff;
+            --accent-2: #ff0080;
+            --gradient: linear-gradient(135deg, #00d4ff, #ff0080);
+            --gradient-2: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            --text-light: #ffffff;
+            --text-gray: #b0b0b0;
+            --card-bg: rgba(26, 26, 26, 0.8);
+            --glow: 0 0 20px rgba(0, 212, 255, 0.3);
+            --hover-glow: 0 0 30px rgba(255, 0, 128, 0.4);
+            --success: #00ff88;
+            --warning: #ffaa00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--primary);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            padding: 10px 25px;
+            border-radius: 25px;
+            color: white !important;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            box-shadow: var(--glow);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .contact-hero {
+            padding: 120px 0 80px;
+            background:
+                linear-gradient(rgba(10, 10, 10, 0.8), rgba(26, 26, 26, 0.9)),
+                radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.1), transparent),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 128, 0.1), transparent);
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Contact Methods Grid */
+        .contact-methods {
+            padding: 80px 0;
+            background: var(--secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-glow);
+            border-color: var(--accent-2);
+        }
+
+        .contact-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .contact-info {
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .contact-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            box-shadow: var(--glow);
+            transform: translateY(-2px);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            padding: 80px 0;
+            background: var(--primary);
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .form-left {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .form-right {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .info-card h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .info-card p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 15px;
+            background: var(--secondary);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--gradient);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .submit-btn:hover {
+            box-shadow: var(--hover-glow);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Office Locations */
+        .locations-section {
+            padding: 80px 0;
+            background: var(--secondary);
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .location-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 0, 128, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-glow);
+            border-color: var(--accent-2);
+        }
+
+        .location-flag {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .location-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .location-address {
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .location-hours {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Social Media */
+        .social-section {
+            padding: 60px 0;
+            background: var(--primary);
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover::before {
+            opacity: 0.2;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--hover-glow);
+        }
+
+        .social-text {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid,
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+            }
+        }
+
+        .animate-glow {
+            animation: glow 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🎮 NEXUS</a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="tournaments.html">Tournaments</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="#" class="nav-cta active">Contact Us</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobile-toggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>🚀 Contact NEXUS</h1>
+                <p>Ready to level up your gaming experience? Get in touch with our team of gaming experts. Whether you
+                    need support, have a partnership proposal, or want to join our community, we're here for you 24/7.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Methods -->
+    <section class="contact-methods">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Choose your preferred way to connect with the NEXUS team</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card" onclick="openLiveChat()">
+                    <div class="contact-icon">💬</div>
+                    <h3 class="contact-title">Live Chat</h3>
+                    <p class="contact-info">Instant support from gaming experts</p>
+                    <p class="contact-info">Average response: <span class="contact-highlight">
+                            < 30 seconds</span>
+                    </p>
+                    <p class="contact-info">Available in 15+ languages</p>
+                    <span class="status-badge pulse">● Online Now</span>
+                    <a href="#" class="contact-btn">Start Chat</a>
+                </div>
+
+                <div class="contact-card" onclick="openEmail()">
+                    <div class="contact-icon">📧</div>
+                    <h3 class="contact-title">Email Support</h3>
+                    <p class="contact-info"><span class="contact-highlight">support@nexusgaming.com</span></p>
+                    <p class="contact-info">Detailed responses within 2 hours</p>
+                    <p class="contact-info">Perfect for complex issues</p>
+                    <span class="status-badge">● 24/7 Available</span>
+                    <a href="mailto:support@nexusgaming.com" class="contact-btn">Send Email</a>
+                </div>
+
+                <div class="contact-card" onclick="callPhone()">
+                    <div class="contact-icon">📞</div>
+                    <h3 class="contact-title">Phone Support</h3>
+                    <p class="contact-info"><span class="contact-highlight">+1-800-NEXUS-HELP</span></p>
+                    <p class="contact-info">Direct line to gaming specialists</p>
+                    <p class="contact-info">Premium support for urgent issues</p>
+                    <span class="status-badge">● 24/7 Hotline</span>
+                    <a href="tel:+18006398774" class="contact-btn">Call Now</a>
+                </div>
+
+                <div class="contact-card" onclick="joinDiscord()">
+                    <div class="contact-icon">🎮</div>
+                    <h3 class="contact-title">Discord Community</h3>
+                    <p class="contact-info">Join our massive gaming community</p>
+                    <p class="contact-info"><span class="contact-highlight">500K+ active members</span></p>
+                    <p class="contact-info">Get help from players & moderators</p>
+                    <span class="status-badge">● Always Active</span>
+                    <a href="#" class="contact-btn">Join Server</a>
+                </div>
+
+                <div class="contact-card" onclick="openBusinessContact()">
+                    <div class="contact-icon">🤝</div>
+                    <h3 class="contact-title">Business Inquiries</h3>
+                    <p class="contact-info"><span class="contact-highlight">business@nexusgaming.com</span></p>
+                    <p class="contact-info">Partnerships & collaborations</p>
+                    <p class="contact-info">Sponsorship opportunities</p>
+                    <span class="status-badge">● Business Hours</span>
+                    <a href="mailto:business@nexusgaming.com" class="contact-btn">Contact Team</a>
+                </div>
+
+                <div class="contact-card" onclick="openCareers()">
+                    <div class="contact-icon">💼</div>
+                    <h3 class="contact-title">Join Our Team</h3>
+                    <p class="contact-info"><span class="contact-highlight">careers@nexusgaming.com</span></p>
+                    <p class="contact-info">Work with cutting-edge gaming tech</p>
+                    <p class="contact-info">Remote & on-site opportunities</p>
+                    <span class="status-badge">● Hiring Now</span>
+                    <a href="#" class="contact-btn">View Jobs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Send Us a Message</h2>
+                <p>Have a specific question? Drop us a message and we'll get back to you lightning fast!</p>
+            </div>
+
+            <div class="form-container">
+                <div class="form-grid">
+                    <div class="form-left">
+                        <form id="contact-form" onsubmit="submitContactForm(event)">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Your Name *</label>
+                                <input type="text" class="form-input" id="name" name="name" required
+                                    placeholder="Enter your gaming name">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address *</label>
+                                <input type="email" class="form-input" id="email" name="email" required
+                                    placeholder="your@email.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="subject">Subject *</label>
+                                <select class="form-select" id="subject" name="subject" required>
+                                    <option value="">Choose a topic...</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="account">Account Issues</option>
+                                    <option value="billing">Billing Questions</option>
+                                    <option value="tournaments">Tournament Info</option>
+                                    <option value="partnership">Partnership Proposal</option>
+                                    <option value="press">Press & Media</option>
+                                    <option value="feedback">Feedback & Suggestions</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="message">Your Message *</label>
+                                <textarea class="form-textarea" id="message" name="message" required
+                                    placeholder="Tell us what's on your mind... The more detail, the better we can help!"></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-btn">🚀 Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="form-right">
+                        <div class="info-card">
+                            <h3>⚡ Response Time</h3>
+                            <p>We typically respond to all inquiries within 2 hours during business hours, and within 4
+                                hours on weekends and holidays.</p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🌍 Global Support</h3>
+                            <p>Our support team operates across multiple time zones to provide 24/7 assistance to gamers
+                                worldwide.</p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🎮 Gaming Focus</h3>
+                            <p>Our entire team are passionate gamers who understand your needs and speak your language.
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🔒 Privacy First</h3>
+                            <p>Your information is encrypted and secure. We never share your data with third parties.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations -->
+    <section class="locations-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Global Presence</h2>
+                <p>NEXUS Gaming operates from cutting-edge facilities around the world</p>
+            </div>
+
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-flag">🇺🇸</div>
+                    <h3 class="location-title">NEXUS HQ - Silicon Valley</h3>
+                    <div class="location-address">
+                        1337 Gaming Boulevard<br>
+                        San Francisco, CA 94105<br>
+                        United States
+                    </div>
+                    <div class="location-hours">Mon-Fri: 9AM-6PM PST</div>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-flag">🇬🇧</div>
+                    <h3 class="location-title">NEXUS Europe - London</h3>
+                    <div class="location-address">
+                        42 Cyber Street<br>
+                        London, EC2A 4DP<br>
+                        United Kingdom
+                    </div>
+                    <div class="location-hours">Mon-Fri: 9AM-6PM GMT</div>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-flag">🇯🇵</div>
+                    <h3 class="location-title">NEXUS Asia - Tokyo</h3>
+                    <div class="location-address">
+                        Gaming Tower, Floor 25<br>
+                        Shibuya, Tokyo 150-0043<br>
+                        Japan
+                    </div>
+                    <div class="location-hours">Mon-Fri: 9AM-6PM JST</div>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-flag">🇦🇺</div>
+                    <h3 class="location-title">NEXUS Oceania - Sydney</h3>
+                    <div class="location-address">
+                        88 Pixel Plaza<br>
+                        Sydney, NSW 2000<br>
+                        Australia
+                    </div>
+                    <div class="location-hours">Mon-Fri: 9AM-6PM AEST</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media -->
+    <section class="social-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Follow Our Journey</h2>
+                <p>Stay connected with the NEXUS gaming community across all platforms</p>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-link" title="Facebook">
+                    <span>📘</span>
+                </a>
+                <a href="#" class="social-link" title="Instagram">
+                    <span>📷</span>
+                </a>
+                <a href="#" class="social-link" title="Twitter">
+                    <span>🐦</span>
+                </a>
+                <a href="#" class="social-link" title="YouTube">
+                    <span>📺</span>
+                </a>
+                <a href="#" class="social-link" title="TikTok">
+                    <span>🎵</span>
+                </a>
+                <a href="#" class="social-link" title="Twitch">
+                    <span>🟣</span>
+                </a>
+                <a href="#" class="social-link" title="Reddit">
+                    <span>🟠</span>
+                </a>
+                <a href="#" class="social-link" title="LinkedIn">
+                    <span>💼</span>
+                </a>
+            </div>
+            <p class="social-text">Join millions of gamers following NEXUS across social media</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer"
+        style="background: var(--secondary); padding: 40px 0; border-top: 1px solid rgba(0, 212, 255, 0.2);">
+        <div class="container">
+            <div style="text-align: center; color: var(--text-gray);">
+                <p>© 2024 NEXUS Gaming Hub. All rights reserved.</p>
+                <!-- <p style="margin-top: 15px; color: var(--accent -->
